@@ -8,7 +8,7 @@
 // ignore_for_file: type=lint
 import 'dart:ffi' as ffi;
 
-/// Bindings for `src/liblouis_package.h`.
+/// Bindings for `src/liblouis.h`.
 ///
 /// Regenerate bindings with `flutter pub run ffigen --config ffigen.yaml`.
 ///
@@ -27,44 +27,2831 @@ class LiblouisPackageBindings {
           lookup)
       : _lookup = lookup;
 
-  /// A very short-lived native function.
-  ///
-  /// For very short-lived functions, it is fine to call them on the main isolate.
-  /// They will block the Dart execution while running the native function, so
-  /// only do this for native functions which are guaranteed to be short-lived.
-  int sum(
-    int a,
-    int b,
+  ffi.Pointer<ffi.Char> lou_version() {
+    return _lou_version();
+  }
+
+  late final _lou_versionPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'lou_version');
+  late final _lou_version =
+      _lou_versionPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  /// Return the size of widechar
+  int lou_charSize() {
+    return _lou_charSize();
+  }
+
+  late final _lou_charSizePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('lou_charSize');
+  late final _lou_charSize = _lou_charSizePtr.asFunction<int Function()>();
+
+  int lou_translateString(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    int mode,
   ) {
-    return _sum(
-      a,
-      b,
+    return _lou_translateString(
+      tableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      mode,
     );
   }
 
-  late final _sumPtr =
-      _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.IntPtr, ffi.IntPtr)>>(
-          'sum');
-  late final _sum = _sumPtr.asFunction<int Function(int, int)>();
+  late final _lou_translateStringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Int)>>('lou_translateString');
+  late final _lou_translateString = _lou_translateStringPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<formtype>,
+          ffi.Pointer<ffi.Char>,
+          int)>();
 
-  /// A longer lived native function, which occupies the thread calling it.
-  ///
-  /// Do not call these kind of native functions in the main isolate. They will
-  /// block Dart execution. This will cause dropped frames in Flutter applications.
-  /// Instead, call these native functions on a separate isolate.
-  int sum_long_running(
-    int a,
-    int b,
+  int lou_translate(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    ffi.Pointer<ffi.Int> outputPos,
+    ffi.Pointer<ffi.Int> inputPos,
+    ffi.Pointer<ffi.Int> cursorPos,
+    int mode,
   ) {
-    return _sum_long_running(
-      a,
-      b,
+    return _lou_translate1(
+      tableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      outputPos,
+      inputPos,
+      cursorPos,
+      mode,
     );
   }
 
-  late final _sum_long_runningPtr =
-      _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.IntPtr, ffi.IntPtr)>>(
-          'sum_long_running');
-  late final _sum_long_running =
-      _sum_long_runningPtr.asFunction<int Function(int, int)>();
+  late final _lou_translatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Int)>>('lou_translate');
+  late final _lou_translate1 = _lou_translatePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<formtype>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          int)>();
+
+  int lou_translatePrehyphenated(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    ffi.Pointer<ffi.Int> outputPos,
+    ffi.Pointer<ffi.Int> inputPos,
+    ffi.Pointer<ffi.Int> cursorPos,
+    ffi.Pointer<ffi.Char> inputHyphens,
+    ffi.Pointer<ffi.Char> outputHyphens,
+    int mode,
+  ) {
+    return _lou_translatePrehyphenated(
+      tableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      outputPos,
+      inputPos,
+      cursorPos,
+      inputHyphens,
+      outputHyphens,
+      mode,
+    );
+  }
+
+  late final _lou_translatePrehyphenatedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Int)>>('lou_translatePrehyphenated');
+  late final _lou_translatePrehyphenated =
+      _lou_translatePrehyphenatedPtr.asFunction<
+          int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              int)>();
+
+  int lou_hyphenate(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    int inlen,
+    ffi.Pointer<ffi.Char> hyphens,
+    int mode,
+  ) {
+    return _lou_hyphenate(
+      tableList,
+      inbuf,
+      inlen,
+      hyphens,
+      mode,
+    );
+  }
+
+  late final _lou_hyphenatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>,
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int)>>('lou_hyphenate');
+  late final _lou_hyphenate = _lou_hyphenatePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>, int,
+          ffi.Pointer<ffi.Char>, int)>();
+
+  /// Convert a string of dot patterns to a string of chars
+  ///
+  /// @param[in]  tableList comma separated list of braille tables
+  /// @param[in]  inbuf widechar string of dot patterns, either in liblouis format or Unicode
+  /// braille
+  /// @param[out] outbuf widechar string corresponding to the dot patterns in `inbuf`
+  /// @param[in,out] length of both `inbuf` and `outbuf`
+  /// @param[in] mode (deprecated)
+  ///
+  /// @return 1 on success and 0 on failure.
+  int lou_dotsToChar(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<widechar> outbuf,
+    int length,
+    int mode,
+  ) {
+    return _lou_dotsToChar(
+      tableList,
+      inbuf,
+      outbuf,
+      length,
+      mode,
+    );
+  }
+
+  late final _lou_dotsToCharPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>,
+              ffi.Pointer<widechar>, ffi.Int, ffi.Int)>>('lou_dotsToChar');
+  late final _lou_dotsToChar = _lou_dotsToCharPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>,
+          ffi.Pointer<widechar>, int, int)>();
+
+  int lou_charToDots(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<widechar> outbuf,
+    int length,
+    int mode,
+  ) {
+    return _lou_charToDots(
+      tableList,
+      inbuf,
+      outbuf,
+      length,
+      mode,
+    );
+  }
+
+  late final _lou_charToDotsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>,
+              ffi.Pointer<widechar>, ffi.Int, ffi.Int)>>('lou_charToDots');
+  late final _lou_charToDots = _lou_charToDotsPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>,
+          ffi.Pointer<widechar>, int, int)>();
+
+  int lou_backTranslateString(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    int mode,
+  ) {
+    return _lou_backTranslateString(
+      tableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      mode,
+    );
+  }
+
+  late final _lou_backTranslateStringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Int)>>('lou_backTranslateString');
+  late final _lou_backTranslateString = _lou_backTranslateStringPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<formtype>,
+          ffi.Pointer<ffi.Char>,
+          int)>();
+
+  int lou_backTranslate(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    ffi.Pointer<ffi.Int> outputPos,
+    ffi.Pointer<ffi.Int> inputPos,
+    ffi.Pointer<ffi.Int> cursorPos,
+    int mode,
+  ) {
+    return _lou_backTranslate1(
+      tableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      outputPos,
+      inputPos,
+      cursorPos,
+      mode,
+    );
+  }
+
+  late final _lou_backTranslatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Int)>>('lou_backTranslate');
+  late final _lou_backTranslate1 = _lou_backTranslatePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<formtype>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          int)>();
+
+  /// Print error messages to a file
+  ///
+  /// @deprecated As of 2.6.0, applications using liblouis should
+  /// implement their own logging system.
+  void lou_logPrint(
+    ffi.Pointer<ffi.Char> format,
+  ) {
+    return _lou_logPrint(
+      format,
+    );
+  }
+
+  late final _lou_logPrintPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'lou_logPrint');
+  late final _lou_logPrint =
+      _lou_logPrintPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Specify the name of the file to be used by lou_logPrint.
+  ///
+  /// If it is not used, this file is stderr
+  ///
+  /// @deprecated As of 2.6.0, applications using liblouis should
+  /// implement their own logging system.
+  void lou_logFile(
+    ffi.Pointer<ffi.Char> filename,
+  ) {
+    return _lou_logFile(
+      filename,
+    );
+  }
+
+  late final _lou_logFilePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'lou_logFile');
+  late final _lou_logFile =
+      _lou_logFilePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Read a character from a file, whether big-endian, little-endian or ASCII8
+  ///
+  /// and return it as an integer. EOF at end of file. Mode = 1 on first
+  /// call, any other value thereafter
+  int lou_readCharFromFile(
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Int> mode,
+  ) {
+    return _lou_readCharFromFile(
+      fileName,
+      mode,
+    );
+  }
+
+  late final _lou_readCharFromFilePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>)>>('lou_readCharFromFile');
+  late final _lou_readCharFromFile = _lou_readCharFromFilePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
+
+  /// Close the log file so it can be read by other functions.
+  ///
+  /// @deprecated As of 2.6.0, applications using liblouis should
+  /// implement their own logging system.
+  void lou_logEnd() {
+    return _lou_logEnd();
+  }
+
+  late final _lou_logEndPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('lou_logEnd');
+  late final _lou_logEnd = _lou_logEndPtr.asFunction<void Function()>();
+
+  /// Load and compile a translation table
+  ///
+  /// Check the table for errors. If none are found load the table into
+  /// memory and return a pointer to it. If errors are found return a
+  /// null pointer. It is called by lou_translateString() and
+  /// lou_backTranslateString() and also by functions in liblouisutdml
+  /// and by the tools.
+  ffi.Pointer<ffi.Void> lou_getTable(
+    ffi.Pointer<ffi.Char> tableList,
+  ) {
+    return _lou_getTable1(
+      tableList,
+    );
+  }
+
+  late final _lou_getTablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Pointer<ffi.Char>)>>('lou_getTable');
+  late final _lou_getTable1 = _lou_getTablePtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Check a translation table for errors.
+  ///
+  /// If no errors are found it load the table into memory and returns a
+  /// non-zero value. Else the return value is 0.
+  int lou_checkTable(
+    ffi.Pointer<ffi.Char> tableList,
+  ) {
+    return _lou_checkTable(
+      tableList,
+    );
+  }
+
+  late final _lou_checkTablePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'lou_checkTable');
+  late final _lou_checkTable =
+      _lou_checkTablePtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Register a new table resolver. Overrides the default resolver.
+  void lou_registerTableResolver(
+    ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                    ffi.Pointer<ffi.Char> table, ffi.Pointer<ffi.Char> base)>>
+        resolver,
+  ) {
+    return _lou_registerTableResolver(
+      resolver,
+    );
+  }
+
+  late final _lou_registerTableResolverPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Pointer<
+                      ffi.NativeFunction<
+                          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                              ffi.Pointer<ffi.Char> table,
+                              ffi.Pointer<ffi.Char> base)>>)>>(
+      'lou_registerTableResolver');
+  late final _lou_registerTableResolver =
+      _lou_registerTableResolverPtr.asFunction<
+          void Function(
+              ffi.Pointer<
+                  ffi.NativeFunction<
+                      ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+                          ffi.Pointer<ffi.Char> table,
+                          ffi.Pointer<ffi.Char> base)>>)>();
+
+  /// Compile a table entry on the fly at run-time
+  ///
+  /// This function enables you to compile a table entry on the fly at
+  /// run-time. The new entry is added to tableList and remains in
+  /// force until lou_free() is called. If tableList has not
+  /// previously been loaded it is loaded and compiled.
+  ///
+  /// @param inString contains the table entry to be added. It may be
+  /// anything valid. Error messages will be produced if it is invalid.
+  ///
+  /// @return 1 on success and 0 on failure.
+  int lou_compileString(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> inString,
+  ) {
+    return _lou_compileString(
+      tableList,
+      inString,
+    );
+  }
+
+  late final _lou_compileStringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('lou_compileString');
+  late final _lou_compileString = _lou_compileStringPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  /// Get the typeform bit for the named emphasis class.
+  ///
+  /// If the table defines the specified emphasis class the corresponding
+  /// typeform is returned. Else the return value is 0.
+  int lou_getTypeformForEmphClass(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> emphClass,
+  ) {
+    return _lou_getTypeformForEmphClass(
+      tableList,
+      emphClass,
+    );
+  }
+
+  late final _lou_getTypeformForEmphClassPtr = _lookup<
+      ffi.NativeFunction<
+          formtype Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('lou_getTypeformForEmphClass');
+  late final _lou_getTypeformForEmphClass = _lou_getTypeformForEmphClassPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  /// Return the emphasis class names declared in tableList as a
+  /// NULL-terminated array of strings. The array is acquired with malloc()
+  /// and should be released with free(). The strings must not be released,
+  /// and are no longer valid after lou_free() has been called.
+  ffi.Pointer<ffi.Pointer<ffi.Char>> lou_getEmphClasses(
+    ffi.Pointer<ffi.Char> tableList,
+  ) {
+    return _lou_getEmphClasses(
+      tableList,
+    );
+  }
+
+  late final _lou_getEmphClassesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<ffi.Char>)>>('lou_getEmphClasses');
+  late final _lou_getEmphClasses = _lou_getEmphClassesPtr.asFunction<
+      ffi.Pointer<ffi.Pointer<ffi.Char>> Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Set the path used for searching for tables and liblouisutdml files.
+  ///
+  /// Overrides the installation path. Returns NULL if `path` is NULL or
+  /// if the length of `path` is equal or longer than `MAXSTRING`.
+  ///
+  /// @deprecated Please migrate to one of the other ways to set the
+  /// table search path. See the NEWS file for details.
+  ffi.Pointer<ffi.Char> lou_setDataPath(
+    ffi.Pointer<ffi.Char> path,
+  ) {
+    return _lou_setDataPath(
+      path,
+    );
+  }
+
+  late final _lou_setDataPathPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('lou_setDataPath');
+  late final _lou_setDataPath = _lou_setDataPathPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Get the path set in the previous function.
+  ///
+  /// @deprecated Please migrate to one of the other ways to get the
+  /// table search path. See the NEWS file for details.
+  ffi.Pointer<ffi.Char> lou_getDataPath() {
+    return _lou_getDataPath();
+  }
+
+  late final _lou_getDataPathPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'lou_getDataPath');
+  late final _lou_getDataPath =
+      _lou_getDataPathPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  /// Register logging callbacks
+  /// Set to NULL for default callback.
+  void lou_registerLogCallback(
+    logcallback callback,
+  ) {
+    return _lou_registerLogCallback(
+      callback,
+    );
+  }
+
+  late final _lou_registerLogCallbackPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(logcallback)>>(
+          'lou_registerLogCallback');
+  late final _lou_registerLogCallback =
+      _lou_registerLogCallbackPtr.asFunction<void Function(logcallback)>();
+
+  /// Set the level for logging callback to be called at
+  void lou_setLogLevel(
+    int level,
+  ) {
+    return _lou_setLogLevel(
+      level,
+    );
+  }
+
+  late final _lou_setLogLevelPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+          'lou_setLogLevel');
+  late final _lou_setLogLevel =
+      _lou_setLogLevelPtr.asFunction<void Function(int)>();
+
+  /// Parse, analyze and index tables.
+  ///
+  /// This function must be called prior to lou_findTable() and
+  /// lou_listTables(). Table names must be provided as a NULL-terminated
+  /// array of strings. Each table should resolve to exactly one file. An
+  /// error message is given when a table contains invalid or duplicate
+  /// metadata fields.
+  void lou_indexTables(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> tables,
+  ) {
+    return _lou_indexTables(
+      tables,
+    );
+  }
+
+  late final _lou_indexTablesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('lou_indexTables');
+  late final _lou_indexTables = _lou_indexTablesPtr
+      .asFunction<void Function(ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  /// Find the best match for a query.
+  ///
+  /// Returns the name of the table, or NULL when no match can be
+  /// found. If lou_indexTables() has not been previously called, the
+  /// table search path specified with LOUIS_TABLEPATH will be indexed
+  /// first. An error message is given when the query is invalid. Freeing
+  /// the memory of the returned string is the responsibility of the
+  /// caller.
+  ffi.Pointer<ffi.Char> lou_findTable(
+    ffi.Pointer<ffi.Char> query,
+  ) {
+    return _lou_findTable(
+      query,
+    );
+  }
+
+  late final _lou_findTablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('lou_findTable');
+  late final _lou_findTable = _lou_findTablePtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Find all matches for a query, best match first.
+  ///
+  /// Returns the names of the matched table as a NULL-terminated array
+  /// of string. If lou_indexTables() has not been previously called, the
+  /// table search path specified with LOUIS_TABLEPATH will be indexed
+  /// first. An error message is given when the query is invalid. Freeing
+  /// the memory of the returned array and strings is the responsibility
+  /// of the caller.
+  ffi.Pointer<ffi.Pointer<ffi.Char>> lou_findTables(
+    ffi.Pointer<ffi.Char> query,
+  ) {
+    return _lou_findTables(
+      query,
+    );
+  }
+
+  late final _lou_findTablesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<ffi.Char>)>>('lou_findTables');
+  late final _lou_findTables = _lou_findTablesPtr.asFunction<
+      ffi.Pointer<ffi.Pointer<ffi.Char>> Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Read metadata from a file.
+  ///
+  /// Returns the value of the first occuring metadata field specified by
+  /// `key' in `table', or NULL when the field does not exist. Freeing
+  /// the memory of the returned string is the responsibility of the
+  /// caller.
+  ffi.Pointer<ffi.Char> lou_getTableInfo(
+    ffi.Pointer<ffi.Char> table,
+    ffi.Pointer<ffi.Char> key,
+  ) {
+    return _lou_getTableInfo(
+      table,
+      key,
+    );
+  }
+
+  late final _lou_getTableInfoPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('lou_getTableInfo');
+  late final _lou_getTableInfo = _lou_getTableInfoPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  /// List available tables.
+  ///
+  /// Returns the names of available tables as a NULL-terminated array of
+  /// strings. Only tables that are discoverable, i.e. the have active
+  /// metadata, are listed. If lou_indexTables() has not been previously
+  /// called, the table search path specified with LOUIS_TABLEPATH will
+  /// be indexed first. Freeing the memory of the returned array and
+  /// strings is the responsibility of the caller.
+  ffi.Pointer<ffi.Pointer<ffi.Char>> lou_listTables() {
+    return _lou_listTables();
+  }
+
+  late final _lou_listTablesPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Pointer<ffi.Char>> Function()>>(
+      'lou_listTables');
+  late final _lou_listTables = _lou_listTablesPtr
+      .asFunction<ffi.Pointer<ffi.Pointer<ffi.Char>> Function()>();
+
+  /// Free all memory allocated by liblouis.
+  ///
+  /// This function should be called at the end of the application to
+  /// free all memory allocated by liblouis.
+  void lou_free() {
+    return _lou_free();
+  }
+
+  late final _lou_freePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('lou_free');
+  late final _lou_free = _lou_freePtr.asFunction<void Function()>();
+
+  /// Comma separated list of directories to search for tables.
+  ffi.Pointer<ffi.Char> _lou_getTablePath() {
+    return __lou_getTablePath();
+  }
+
+  late final __lou_getTablePathPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          '_lou_getTablePath');
+  late final __lou_getTablePath =
+      __lou_getTablePathPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
+  /// Resolve tableList against base.
+  ffi.Pointer<ffi.Pointer<ffi.Char>> _lou_resolveTable(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> base,
+  ) {
+    return __lou_resolveTable(
+      tableList,
+      base,
+    );
+  }
+
+  late final __lou_resolveTablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('_lou_resolveTable');
+  late final __lou_resolveTable = __lou_resolveTablePtr.asFunction<
+      ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  /// The default table resolver
+  ffi.Pointer<ffi.Pointer<ffi.Char>> _lou_defaultTableResolver(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> base,
+  ) {
+    return __lou_defaultTableResolver(
+      tableList,
+      base,
+    );
+  }
+
+  late final __lou_defaultTableResolverPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('_lou_defaultTableResolver');
+  late final __lou_defaultTableResolver =
+      __lou_defaultTableResolverPtr.asFunction<
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  /// Return single-cell dot pattern corresponding to a character.
+  /// TODO: move to commonTranslationFunctions.c
+  int _lou_getDotsForChar(
+    int c,
+    ffi.Pointer<DisplayTableHeader> table,
+  ) {
+    return __lou_getDotsForChar(
+      c,
+      table,
+    );
+  }
+
+  late final __lou_getDotsForCharPtr = _lookup<
+      ffi.NativeFunction<
+          widechar Function(widechar,
+              ffi.Pointer<DisplayTableHeader>)>>('_lou_getDotsForChar');
+  late final __lou_getDotsForChar = __lou_getDotsForCharPtr
+      .asFunction<int Function(int, ffi.Pointer<DisplayTableHeader>)>();
+
+  /// Return character corresponding to a single-cell dot pattern.
+  /// TODO: move to commonTranslationFunctions.c
+  int _lou_getCharForDots(
+    int d,
+    ffi.Pointer<DisplayTableHeader> table,
+  ) {
+    return __lou_getCharForDots(
+      d,
+      table,
+    );
+  }
+
+  late final __lou_getCharForDotsPtr = _lookup<
+      ffi.NativeFunction<
+          widechar Function(widechar,
+              ffi.Pointer<DisplayTableHeader>)>>('_lou_getCharForDots');
+  late final __lou_getCharForDots = __lou_getCharForDotsPtr
+      .asFunction<int Function(int, ffi.Pointer<DisplayTableHeader>)>();
+
+  void _lou_getTable(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> displayTableList,
+    ffi.Pointer<ffi.Pointer<TranslationTableHeader>> translationTable,
+    ffi.Pointer<ffi.Pointer<DisplayTableHeader>> displayTable,
+  ) {
+    return __lou_getTable(
+      tableList,
+      displayTableList,
+      translationTable,
+      displayTable,
+    );
+  }
+
+  late final __lou_getTablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<TranslationTableHeader>>,
+              ffi.Pointer<ffi.Pointer<DisplayTableHeader>>)>>('_lou_getTable');
+  late final __lou_getTable = __lou_getTablePtr.asFunction<
+      void Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Pointer<TranslationTableHeader>>,
+          ffi.Pointer<ffi.Pointer<DisplayTableHeader>>)>();
+
+  ffi.Pointer<TranslationTableHeader> _lou_getTranslationTable(
+    ffi.Pointer<ffi.Char> tableList,
+  ) {
+    return __lou_getTranslationTable(
+      tableList,
+    );
+  }
+
+  late final __lou_getTranslationTablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<TranslationTableHeader> Function(
+              ffi.Pointer<ffi.Char>)>>('_lou_getTranslationTable');
+  late final __lou_getTranslationTable =
+      __lou_getTranslationTablePtr.asFunction<
+          ffi.Pointer<TranslationTableHeader> Function(
+              ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<DisplayTableHeader> _lou_getDisplayTable(
+    ffi.Pointer<ffi.Char> tableList,
+  ) {
+    return __lou_getDisplayTable(
+      tableList,
+    );
+  }
+
+  late final __lou_getDisplayTablePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<DisplayTableHeader> Function(
+              ffi.Pointer<ffi.Char>)>>('_lou_getDisplayTable');
+  late final __lou_getDisplayTable = __lou_getDisplayTablePtr.asFunction<
+      ffi.Pointer<DisplayTableHeader> Function(ffi.Pointer<ffi.Char>)>();
+
+  int _lou_compileTranslationRule(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> inString,
+  ) {
+    return __lou_compileTranslationRule(
+      tableList,
+      inString,
+    );
+  }
+
+  late final __lou_compileTranslationRulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('_lou_compileTranslationRule');
+  late final __lou_compileTranslationRule = __lou_compileTranslationRulePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int _lou_compileDisplayRule(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> inString,
+  ) {
+    return __lou_compileDisplayRule(
+      tableList,
+      inString,
+    );
+  }
+
+  late final __lou_compileDisplayRulePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('_lou_compileDisplayRule');
+  late final __lou_compileDisplayRule = __lou_compileDisplayRulePtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  /// Allocate memory for internal buffers
+  ///
+  /// Used by lou_translateString.c and lou_backTranslateString.c ONLY
+  /// to allocate memory for internal buffers.
+  /// TODO: move to utils.c
+  ffi.Pointer<ffi.Void> _lou_allocMem(
+    int buffer,
+    int index,
+    int srcmax,
+    int destmax,
+  ) {
+    return __lou_allocMem(
+      buffer,
+      index,
+      srcmax,
+      destmax,
+    );
+  }
+
+  late final __lou_allocMemPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(
+              ffi.Int32, ffi.Int, ffi.Int, ffi.Int)>>('_lou_allocMem');
+  late final __lou_allocMem = __lou_allocMemPtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(int, int, int, int)>();
+
+  /// Hash function for character strings
+  ///
+  /// @param lowercase Whether to convert the string to lowercase because
+  /// making the hash of it.
+  int _lou_stringHash(
+    ffi.Pointer<widechar> c,
+    int lowercase,
+    ffi.Pointer<TranslationTableHeader> table,
+  ) {
+    return __lou_stringHash(
+      c,
+      lowercase,
+      table,
+    );
+  }
+
+  late final __lou_stringHashPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<widechar>, ffi.Int,
+              ffi.Pointer<TranslationTableHeader>)>>('_lou_stringHash');
+  late final __lou_stringHash = __lou_stringHashPtr.asFunction<
+      int Function(
+          ffi.Pointer<widechar>, int, ffi.Pointer<TranslationTableHeader>)>();
+
+  /// Hash function for single characters
+  int _lou_charHash(
+    int c,
+  ) {
+    return __lou_charHash(
+      c,
+    );
+  }
+
+  late final __lou_charHashPtr =
+      _lookup<ffi.NativeFunction<ffi.UnsignedLong Function(widechar)>>(
+          '_lou_charHash');
+  late final __lou_charHash = __lou_charHashPtr.asFunction<int Function(int)>();
+
+  /// Return a string in the same format as the characters operand in opcodes
+  ffi.Pointer<ffi.Char> _lou_showString(
+    ffi.Pointer<widechar> chars,
+    int length,
+    int forceHex,
+  ) {
+    return __lou_showString(
+      chars,
+      length,
+      forceHex,
+    );
+  }
+
+  late final __lou_showStringPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<widechar>, ffi.Int, ffi.Int)>>('_lou_showString');
+  late final __lou_showString = __lou_showStringPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<widechar>, int, int)>();
+
+  /// Print out dot numbers
+  ///
+  /// @return a string containing the dot numbers. The longest possible
+  /// output is "\123456789ABCDEF0/"
+  ffi.Pointer<ffi.Char> _lou_unknownDots(
+    int dots,
+  ) {
+    return __lou_unknownDots(
+      dots,
+    );
+  }
+
+  late final __lou_unknownDotsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(widechar)>>(
+          '_lou_unknownDots');
+  late final __lou_unknownDots =
+      __lou_unknownDotsPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  /// Return a character string in the format of the dots operand
+  ffi.Pointer<ffi.Char> _lou_showDots(
+    ffi.Pointer<widechar> dots,
+    int length,
+  ) {
+    return __lou_showDots(
+      dots,
+      length,
+    );
+  }
+
+  late final __lou_showDotsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<widechar>, ffi.Int)>>('_lou_showDots');
+  late final __lou_showDots = __lou_showDotsPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<widechar>, int)>();
+
+  /// Return a character string where the attributes are indicated
+  /// by the attribute letters used in multipass opcodes
+  ffi.Pointer<ffi.Char> _lou_showAttributes(
+    int a,
+  ) {
+    return __lou_showAttributes(
+      a,
+    );
+  }
+
+  late final __lou_showAttributesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              TranslationTableCharacterAttributes)>>('_lou_showAttributes');
+  late final __lou_showAttributes =
+      __lou_showAttributesPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  /// Return number of the opcode
+  ///
+  /// @param toFind the opcodes
+  int _lou_findOpcodeNumber(
+    ffi.Pointer<ffi.Char> tofind,
+  ) {
+    return __lou_findOpcodeNumber(
+      tofind,
+    );
+  }
+
+  late final __lou_findOpcodeNumberPtr =
+      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Char>)>>(
+          '_lou_findOpcodeNumber');
+  late final __lou_findOpcodeNumber = __lou_findOpcodeNumberPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Return the name of the opcode associated with an opcode number
+  ///
+  /// @param opcode an opcode
+  ffi.Pointer<ffi.Char> _lou_findOpcodeName(
+    int opcode,
+  ) {
+    return __lou_findOpcodeName(
+      opcode,
+    );
+  }
+
+  late final __lou_findOpcodeNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int32)>>(
+          '_lou_findOpcodeName');
+  late final __lou_findOpcodeName =
+      __lou_findOpcodeNamePtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  /// Convert string to wide characters
+  ///
+  /// Takes a character string and produces a sequence of wide characters.
+  /// Opposite of _lou_showString.
+  ///
+  /// @param inString the input string
+  /// @param outString the output wide char sequence
+  /// @return length of the widechar sequence.
+  int _lou_extParseChars(
+    ffi.Pointer<ffi.Char> inString,
+    ffi.Pointer<widechar> outString,
+  ) {
+    return __lou_extParseChars(
+      inString,
+      outString,
+    );
+  }
+
+  late final __lou_extParseCharsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>)>>('_lou_extParseChars');
+  late final __lou_extParseChars = __lou_extParseCharsPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>)>();
+
+  /// Convert string to wide characters containing dot patterns
+  ///
+  /// Takes a character string and produces a sequence of wide characters
+  /// containing dot patterns. Opposite of _lou_showDots.
+  /// @param inString the input string
+  /// @param outString the output wide char sequence
+  /// @return length of the widechar sequence.
+  int _lou_extParseDots(
+    ffi.Pointer<ffi.Char> inString,
+    ffi.Pointer<widechar> outString,
+  ) {
+    return __lou_extParseDots(
+      inString,
+      outString,
+    );
+  }
+
+  late final __lou_extParseDotsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>)>>('_lou_extParseDots');
+  late final __lou_extParseDots = __lou_extParseDotsPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>)>();
+
+  int _lou_translate(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> displayTableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    ffi.Pointer<ffi.Int> outputPos,
+    ffi.Pointer<ffi.Int> inputPos,
+    ffi.Pointer<ffi.Int> cursorPos,
+    int mode,
+    ffi.Pointer<ffi.Pointer<TranslationTableRule>> rules,
+    ffi.Pointer<ffi.Int> rulesLen,
+  ) {
+    return __lou_translate(
+      tableList,
+      displayTableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      outputPos,
+      inputPos,
+      cursorPos,
+      mode,
+      rules,
+      rulesLen,
+    );
+  }
+
+  late final __lou_translatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Int,
+              ffi.Pointer<ffi.Pointer<TranslationTableRule>>,
+              ffi.Pointer<ffi.Int>)>>('_lou_translate');
+  late final __lou_translate = __lou_translatePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<formtype>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          int,
+          ffi.Pointer<ffi.Pointer<TranslationTableRule>>,
+          ffi.Pointer<ffi.Int>)>();
+
+  int _lou_backTranslate(
+    ffi.Pointer<ffi.Char> tableList,
+    ffi.Pointer<ffi.Char> displayTableList,
+    ffi.Pointer<widechar> inbuf,
+    ffi.Pointer<ffi.Int> inlen,
+    ffi.Pointer<widechar> outbuf,
+    ffi.Pointer<ffi.Int> outlen,
+    ffi.Pointer<formtype> typeform,
+    ffi.Pointer<ffi.Char> spacing,
+    ffi.Pointer<ffi.Int> outputPos,
+    ffi.Pointer<ffi.Int> inputPos,
+    ffi.Pointer<ffi.Int> cursorPos,
+    int mode,
+    ffi.Pointer<ffi.Pointer<TranslationTableRule>> rules,
+    ffi.Pointer<ffi.Int> rulesLen,
+  ) {
+    return __lou_backTranslate(
+      tableList,
+      displayTableList,
+      inbuf,
+      inlen,
+      outbuf,
+      outlen,
+      typeform,
+      spacing,
+      outputPos,
+      inputPos,
+      cursorPos,
+      mode,
+      rules,
+      rulesLen,
+    );
+  }
+
+  late final __lou_backTranslatePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<formtype>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>,
+              ffi.Int,
+              ffi.Pointer<ffi.Pointer<TranslationTableRule>>,
+              ffi.Pointer<ffi.Int>)>>('_lou_backTranslate');
+  late final __lou_backTranslate = __lou_backTranslatePtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<widechar>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<formtype>,
+          ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          ffi.Pointer<ffi.Int>,
+          int,
+          ffi.Pointer<ffi.Pointer<TranslationTableRule>>,
+          ffi.Pointer<ffi.Int>)>();
+
+  void _lou_resetPassVariables() {
+    return __lou_resetPassVariables();
+  }
+
+  late final __lou_resetPassVariablesPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
+          '_lou_resetPassVariables');
+  late final __lou_resetPassVariables =
+      __lou_resetPassVariablesPtr.asFunction<void Function()>();
+
+  int _lou_handlePassVariableTest(
+    ffi.Pointer<widechar> instructions,
+    ffi.Pointer<ffi.Int> IC,
+    ffi.Pointer<ffi.Int> itsTrue,
+  ) {
+    return __lou_handlePassVariableTest(
+      instructions,
+      IC,
+      itsTrue,
+    );
+  }
+
+  late final __lou_handlePassVariableTestPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<widechar>, ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>)>>('_lou_handlePassVariableTest');
+  late final __lou_handlePassVariableTest =
+      __lou_handlePassVariableTestPtr.asFunction<
+          int Function(ffi.Pointer<widechar>, ffi.Pointer<ffi.Int>,
+              ffi.Pointer<ffi.Int>)>();
+
+  int _lou_handlePassVariableAction(
+    ffi.Pointer<widechar> instructions,
+    ffi.Pointer<ffi.Int> IC,
+  ) {
+    return __lou_handlePassVariableAction(
+      instructions,
+      IC,
+    );
+  }
+
+  late final __lou_handlePassVariableActionPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<widechar>,
+              ffi.Pointer<ffi.Int>)>>('_lou_handlePassVariableAction');
+  late final __lou_handlePassVariableAction = __lou_handlePassVariableActionPtr
+      .asFunction<int Function(ffi.Pointer<widechar>, ffi.Pointer<ffi.Int>)>();
+
+  int _lou_pattern_compile(
+    ffi.Pointer<widechar> input,
+    int input_max,
+    ffi.Pointer<widechar> expr_data,
+    int expr_max,
+    ffi.Pointer<TranslationTableHeader> table,
+    ffi.Pointer<FileInfo> nested,
+  ) {
+    return __lou_pattern_compile(
+      input,
+      input_max,
+      expr_data,
+      expr_max,
+      table,
+      nested,
+    );
+  }
+
+  late final __lou_pattern_compilePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<widechar>,
+              ffi.Int,
+              ffi.Pointer<widechar>,
+              ffi.Int,
+              ffi.Pointer<TranslationTableHeader>,
+              ffi.Pointer<FileInfo>)>>('_lou_pattern_compile');
+  late final __lou_pattern_compile = __lou_pattern_compilePtr.asFunction<
+      int Function(ffi.Pointer<widechar>, int, ffi.Pointer<widechar>, int,
+          ffi.Pointer<TranslationTableHeader>, ffi.Pointer<FileInfo>)>();
+
+  void _lou_pattern_reverse(
+    ffi.Pointer<widechar> expr_data,
+  ) {
+    return __lou_pattern_reverse(
+      expr_data,
+    );
+  }
+
+  late final __lou_pattern_reversePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<widechar>)>>(
+          '_lou_pattern_reverse');
+  late final __lou_pattern_reverse = __lou_pattern_reversePtr
+      .asFunction<void Function(ffi.Pointer<widechar>)>();
+
+  int _lou_pattern_check(
+    ffi.Pointer<widechar> input,
+    int input_start,
+    int input_minmax,
+    int input_dir,
+    ffi.Pointer<widechar> expr_data,
+    ffi.Pointer<TranslationTableHeader> table,
+  ) {
+    return __lou_pattern_check(
+      input,
+      input_start,
+      input_minmax,
+      input_dir,
+      expr_data,
+      table,
+    );
+  }
+
+  late final __lou_pattern_checkPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<widechar>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<widechar>,
+              ffi.Pointer<TranslationTableHeader>)>>('_lou_pattern_check');
+  late final __lou_pattern_check = __lou_pattern_checkPtr.asFunction<
+      int Function(ffi.Pointer<widechar>, int, int, int, ffi.Pointer<widechar>,
+          ffi.Pointer<TranslationTableHeader>)>();
+
+  /// Read a line of widechar's from an input file
+  int _lou_getALine(
+    ffi.Pointer<FileInfo> info,
+  ) {
+    return __lou_getALine(
+      info,
+    );
+  }
+
+  late final __lou_getALinePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FileInfo>)>>(
+          '_lou_getALine');
+  late final __lou_getALine =
+      __lou_getALinePtr.asFunction<int Function(ffi.Pointer<FileInfo>)>();
+
+  /// Print an out-of-memory message and exit
+  void _lou_outOfMemory() {
+    return __lou_outOfMemory();
+  }
+
+  late final __lou_outOfMemoryPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function()>>('_lou_outOfMemory');
+  late final __lou_outOfMemory =
+      __lou_outOfMemoryPtr.asFunction<void Function()>();
+
+  /// Helper for logging a widechar buffer
+  void _lou_logWidecharBuf(
+    int level,
+    ffi.Pointer<ffi.Char> msg,
+    ffi.Pointer<widechar> wbuf,
+    int wlen,
+  ) {
+    return __lou_logWidecharBuf(
+      level,
+      msg,
+      wbuf,
+      wlen,
+    );
+  }
+
+  late final __lou_logWidecharBufPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<widechar>, ffi.Int)>>('_lou_logWidecharBuf');
+  late final __lou_logWidecharBuf = __lou_logWidecharBufPtr.asFunction<
+      void Function(int, ffi.Pointer<ffi.Char>, ffi.Pointer<widechar>, int)>();
+
+  void _lou_logMessage(
+    int level,
+    ffi.Pointer<ffi.Char> format,
+  ) {
+    return __lou_logMessage(
+      level,
+      format,
+    );
+  }
+
+  late final __lou_logMessagePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Char>)>>(
+      '_lou_logMessage');
+  late final __lou_logMessage = __lou_logMessagePtr
+      .asFunction<void Function(int, ffi.Pointer<ffi.Char>)>();
+
+  late final ffi.Pointer<ffi.Int> _translation_direction =
+      _lookup<ffi.Int>('translation_direction');
+
+  int get translation_direction => _translation_direction.value;
+
+  set translation_direction(int value) => _translation_direction.value = value;
+
+  /// Return 1 if given translation mode is valid. Return 0 otherwise.
+  int _lou_isValidMode(
+    int mode,
+  ) {
+    return __lou_isValidMode(
+      mode,
+    );
+  }
+
+  late final __lou_isValidModePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
+          '_lou_isValidMode');
+  late final __lou_isValidMode =
+      __lou_isValidModePtr.asFunction<int Function(int)>();
+
+  /// Return the default braille representation for a character.
+  int _lou_charToFallbackDots(
+    int c,
+  ) {
+    return __lou_charToFallbackDots(
+      c,
+    );
+  }
+
+  late final __lou_charToFallbackDotsPtr =
+      _lookup<ffi.NativeFunction<widechar Function(widechar)>>(
+          '_lou_charToFallbackDots');
+  late final __lou_charToFallbackDots =
+      __lou_charToFallbackDotsPtr.asFunction<int Function(int)>();
 }
+
+abstract class typeforms {
+  static const int plain_text = 0;
+  static const int emph_1 = 1;
+  static const int emph_2 = 2;
+  static const int emph_3 = 4;
+  static const int emph_4 = 8;
+  static const int emph_5 = 16;
+  static const int emph_6 = 32;
+  static const int emph_7 = 64;
+  static const int emph_8 = 128;
+  static const int emph_9 = 256;
+  static const int emph_10 = 512;
+  static const int computer_braille = 1024;
+  static const int no_translate = 2048;
+  static const int no_contract = 4096;
+}
+
+abstract class translationModes {
+  static const int noContractions = 1;
+  static const int compbrlAtCursor = 2;
+  static const int dotsIO = 4;
+
+  /// for historic reasons 8 and 16 are free
+  static const int compbrlLeftCursor = 32;
+  static const int ucBrl = 64;
+  static const int noUndefined = 128;
+  static const int partialTrans = 256;
+}
+
+/// clang-format interacts badly with @foo@
+/// clang-format off
+typedef widechar = ffi.UnsignedShort;
+
+/// clang-format on
+typedef formtype = ffi.UnsignedShort;
+
+abstract class logLevels {
+  static const int LOU_LOG_ALL = 0;
+  static const int LOU_LOG_DEBUG = 10000;
+  static const int LOU_LOG_INFO = 20000;
+  static const int LOU_LOG_WARN = 30000;
+  static const int LOU_LOG_ERROR = 40000;
+  static const int LOU_LOG_FATAL = 50000;
+  static const int LOU_LOG_OFF = 60000;
+}
+
+typedef logcallback = ffi.Pointer<
+    ffi.NativeFunction<
+        ffi.Void Function(ffi.Int32 level, ffi.Pointer<ffi.Char> message)>>;
+
+abstract class LOU_UnicodeConstants {
+  static const int LOU_ROW_BRAILLE = 10240;
+}
+
+/// Definitions of braille dots
+abstract class BrailleDots {
+  static const int LOU_DOT_1 = 1;
+
+  /// dot 1
+  static const int LOU_DOT_2 = 2;
+
+  /// dot 2
+  static const int LOU_DOT_3 = 4;
+
+  /// dot 3
+  static const int LOU_DOT_4 = 8;
+
+  /// dot 4
+  static const int LOU_DOT_5 = 16;
+
+  /// dot 5
+  static const int LOU_DOT_6 = 32;
+
+  /// dot 6
+  static const int LOU_DOT_7 = 64;
+
+  /// dot 7
+  static const int LOU_DOT_8 = 128;
+
+  /// dot 8
+  static const int LOU_DOT_9 = 256;
+
+  /// virtual dot 9
+  static const int LOU_DOT_10 = 512;
+
+  /// virtual dot A
+  static const int LOU_DOT_11 = 1024;
+
+  /// virtual dot B
+  static const int LOU_DOT_12 = 2048;
+
+  /// virtual dot C
+  static const int LOU_DOT_13 = 4096;
+
+  /// virtual dot D
+  static const int LOU_DOT_14 = 8192;
+
+  /// virtual dot E
+  static const int LOU_DOT_15 = 16384;
+
+  /// virtual dot F
+  static const int LOU_DOTS = 32768;
+}
+
+final class intCharTupple extends ffi.Struct {
+  @ffi.UnsignedLongLong()
+  external int key;
+
+  @ffi.Char()
+  external int value;
+}
+
+abstract class TranslationTableCharacterAttribute {
+  /// The first 8 are the predefined character classes. They need to be listed first and
+  /// in this order because of how allocateCharacterClasses works.
+  static const int CTC_Space = 1;
+  static const int CTC_Letter = 2;
+  static const int CTC_Digit = 4;
+  static const int CTC_Punctuation = 8;
+  static const int CTC_UpperCase = 16;
+  static const int CTC_LowerCase = 32;
+  static const int CTC_Math = 64;
+  static const int CTC_Sign = 128;
+  static const int CTC_LitDigit = 256;
+  static const int CTC_CapsMode = 512;
+
+  /// bit 0x400 used to be taken by CTC_EmphMode
+  static const int CTC_NumericMode = 2048;
+  static const int CTC_NumericNoContract = 4096;
+  static const int CTC_SeqDelimiter = 8192;
+  static const int CTC_SeqBefore = 16384;
+  static const int CTC_SeqAfter = 32768;
+
+  /// The following 8 are reserved for %0 to %7 (in no particular order) */
+  /// /* Be careful with changing these values (and also CTC_EndOfInput) because in
+  /// pattern_compile_expression they are stored in a unsigned int after cutting of the
+  /// 16 least significant bits.
+  static const int CTC_UserDefined1 = 65536;
+  static const int CTC_UserDefined2 = 131072;
+  static const int CTC_UserDefined3 = 262144;
+  static const int CTC_UserDefined4 = 524288;
+  static const int CTC_UserDefined5 = 1048576;
+  static const int CTC_UserDefined6 = 2097152;
+  static const int CTC_UserDefined7 = 4194304;
+  static const int CTC_UserDefined8 = 8388608;
+
+  /// only used by pattern matcher
+  static const int CTC_EndOfInput = 16777216;
+
+  /// only used in TranslationTableRule->before and
+  static const int CTC_EmpMatch = 33554432;
+
+  /// TranslationTableRule->after
+  static const int CTC_MidEndNumericMode = 67108864;
+
+  /// At least 37 more bits available in a unsigned long long (at least 64 bits). Used
+  /// for custom attributes 9 to 45. These need to be the last values of the enum.
+  static const int CTC_UserDefined9 = 134217728;
+  static const int CTC_UserDefined10 = 268435456;
+  static const int CTC_UserDefined11 = 536870912;
+  static const int CTC_UserDefined12 = 1073741824;
+}
+
+abstract class pass_Codes {
+  static const int pass_first = 96;
+  static const int pass_last = 126;
+  static const int pass_lookback = 95;
+  static const int pass_string = 34;
+  static const int pass_dots = 64;
+  static const int pass_omit = 63;
+  static const int pass_startReplace = 91;
+  static const int pass_endReplace = 93;
+  static const int pass_startGroup = 123;
+  static const int pass_endGroup = 125;
+  static const int pass_variable = 35;
+  static const int pass_not = 33;
+  static const int pass_search = 47;
+  static const int pass_any = 97;
+  static const int pass_digit = 100;
+  static const int pass_litDigit = 68;
+  static const int pass_letter = 108;
+  static const int pass_math = 109;
+  static const int pass_punctuation = 112;
+  static const int pass_sign = 83;
+  static const int pass_space = 115;
+  static const int pass_uppercase = 85;
+  static const int pass_lowercase = 117;
+  static const int pass_class1 = 119;
+  static const int pass_class2 = 120;
+  static const int pass_class3 = 121;
+  static const int pass_class4 = 122;
+  static const int pass_attributes = 36;
+  static const int pass_groupstart = 123;
+  static const int pass_groupend = 125;
+  static const int pass_groupreplace = 59;
+  static const int pass_swap = 37;
+  static const int pass_hyphen = 45;
+  static const int pass_until = 46;
+  static const int pass_eq = 61;
+  static const int pass_lt = 60;
+  static const int pass_gt = 62;
+  static const int pass_endTest = 32;
+  static const int pass_plus = 43;
+  static const int pass_copy = 42;
+  static const int pass_leftParen = 40;
+  static const int pass_rightParen = 41;
+  static const int pass_comma = 44;
+  static const int pass_lteq = 130;
+  static const int pass_gteq = 131;
+  static const int pass_invalidToken = 132;
+  static const int pass_noteq = 133;
+  static const int pass_and = 134;
+  static const int pass_or = 135;
+  static const int pass_nameFound = 136;
+  static const int pass_numberFound = 137;
+  static const int pass_boolean = 138;
+  static const int pass_class = 139;
+  static const int pass_define = 140;
+  static const int pass_emphasis = 141;
+  static const int pass_group = 142;
+  static const int pass_mark = 143;
+  static const int pass_repGroup = 143;
+  static const int pass_script = 144;
+  static const int pass_noMoreTokens = 145;
+  static const int pass_replace = 146;
+  static const int pass_if = 147;
+  static const int pass_then = 148;
+  static const int pass_all = 255;
+}
+
+final class CharDotsMapping extends ffi.Struct {
+  @TranslationTableOffset()
+  external int next;
+
+  @widechar()
+  external int lookFor;
+
+  @widechar()
+  external int found;
+}
+
+typedef TranslationTableOffset = ffi.UnsignedInt;
+
+final class TranslationTableCharacter extends ffi.Struct {
+  external ffi.Pointer<ffi.Char> sourceFile;
+
+  @ffi.Int()
+  external int sourceLine;
+
+  @TranslationTableOffset()
+  external int next;
+
+  @TranslationTableOffset()
+  external int definitionRule;
+
+  @TranslationTableOffset()
+  external int otherRules;
+
+  @TranslationTableCharacterAttributes()
+  external int attributes;
+
+  @TranslationTableCharacterAttributes()
+  external int mode;
+
+  @TranslationTableOffset()
+  external int compRule;
+
+  @widechar()
+  external int value;
+
+  @TranslationTableOffset()
+  external int basechar;
+
+  @TranslationTableOffset()
+  external int linked;
+
+  @ffi.Int()
+  external int ruleIndex;
+
+  /// sequence number of rule within table
+  @ffi.Int()
+  external int finalized;
+}
+
+typedef TranslationTableCharacterAttributes = ffi.UnsignedLongLong;
+
+abstract class TranslationTableOpcode {
+  static const int CTO_IncludeFile = 0;
+
+  /// Deprecated, do not use
+  static const int CTO_Locale = 1;
+  static const int CTO_Undefined = 2;
+
+  /// Do not change the order of the following opcodes!
+  static const int CTO_CapsLetter = 3;
+  static const int CTO_BegCapsWord = 4;
+  static const int CTO_EndCapsWord = 5;
+  static const int CTO_BegCaps = 6;
+  static const int CTO_EndCaps = 7;
+  static const int CTO_BegCapsPhrase = 8;
+  static const int CTO_EndCapsPhrase = 9;
+  static const int CTO_LenCapsPhrase = 10;
+  static const int CTO_ModeLetter = 11;
+  static const int CTO_BegModeWord = 12;
+  static const int CTO_EndModeWord = 13;
+  static const int CTO_BegMode = 14;
+  static const int CTO_EndMode = 15;
+  static const int CTO_BegModePhrase = 16;
+  static const int CTO_EndModePhrase = 17;
+  static const int CTO_LenModePhrase = 18;
+
+  /// End of ordered opcodes
+  static const int CTO_LetterSign = 19;
+  static const int CTO_NoLetsignBefore = 20;
+  static const int CTO_NoLetsign = 21;
+  static const int CTO_NoLetsignAfter = 22;
+  static const int CTO_NumberSign = 23;
+  static const int CTO_NoNumberSign = 24;
+  static const int CTO_NumericModeChars = 25;
+  static const int CTO_MidEndNumericModeChars = 26;
+  static const int CTO_NumericNoContractChars = 27;
+  static const int CTO_SeqDelimiter = 28;
+  static const int CTO_SeqBeforeChars = 29;
+  static const int CTO_SeqAfterChars = 30;
+  static const int CTO_SeqAfterPattern = 31;
+  static const int CTO_SeqAfterExpression = 32;
+  static const int CTO_EmphClass = 33;
+
+  /// Do not change the order of the following opcodes!
+  static const int CTO_EmphLetter = 34;
+  static const int CTO_BegEmphWord = 35;
+  static const int CTO_EndEmphWord = 36;
+  static const int CTO_BegEmph = 37;
+  static const int CTO_EndEmph = 38;
+  static const int CTO_BegEmphPhrase = 39;
+  static const int CTO_EndEmphPhrase = 40;
+  static const int CTO_LenEmphPhrase = 41;
+
+  /// End of ordered opcodes
+  static const int CTO_CapsModeChars = 42;
+  static const int CTO_EmphModeChars = 43;
+  static const int CTO_NoEmphChars = 44;
+  static const int CTO_BegComp = 45;
+  static const int CTO_EndComp = 46;
+  static const int CTO_NoContractSign = 47;
+  static const int CTO_MultInd = 48;
+  static const int CTO_CompDots = 49;
+  static const int CTO_Comp6 = 50;
+
+  /// define a character class
+  static const int CTO_Class = 51;
+
+  /// only match if after character in class
+  static const int CTO_After = 52;
+
+  /// only match if before character in class 30
+  static const int CTO_Before = 53;
+  static const int CTO_NoBack = 54;
+  static const int CTO_NoFor = 55;
+  static const int CTO_EmpMatchBefore = 56;
+  static const int CTO_EmpMatchAfter = 57;
+  static const int CTO_SwapCc = 58;
+  static const int CTO_SwapCd = 59;
+  static const int CTO_SwapDd = 60;
+  static const int CTO_Space = 61;
+  static const int CTO_Digit = 62;
+  static const int CTO_Punctuation = 63;
+  static const int CTO_Math = 64;
+  static const int CTO_Sign = 65;
+  static const int CTO_Letter = 66;
+  static const int CTO_UpperCase = 67;
+  static const int CTO_LowerCase = 68;
+  static const int CTO_Grouping = 69;
+  static const int CTO_UpLow = 70;
+  static const int CTO_LitDigit = 71;
+  static const int CTO_Display = 72;
+  static const int CTO_Replace = 73;
+  static const int CTO_Context = 74;
+  static const int CTO_Correct = 75;
+  static const int CTO_Pass2 = 76;
+  static const int CTO_Pass3 = 77;
+  static const int CTO_Pass4 = 78;
+  static const int CTO_Repeated = 79;
+  static const int CTO_RepWord = 80;
+  static const int CTO_RepEndWord = 81;
+  static const int CTO_CapsNoCont = 82;
+  static const int CTO_Always = 83;
+  static const int CTO_ExactDots = 84;
+  static const int CTO_NoCross = 85;
+  static const int CTO_Syllable = 86;
+  static const int CTO_NoCont = 87;
+  static const int CTO_CompBrl = 88;
+  static const int CTO_Literal = 89;
+  static const int CTO_LargeSign = 90;
+  static const int CTO_WholeWord = 91;
+  static const int CTO_PartWord = 92;
+  static const int CTO_JoinNum = 93;
+  static const int CTO_JoinableWord = 94;
+  static const int CTO_LowWord = 95;
+  static const int CTO_Contraction = 96;
+  static const int CTO_SuffixableWord = 97;
+
+  /// whole word or beginning of word
+  static const int CTO_PrefixableWord = 98;
+
+  /// whole word or end of word
+  static const int CTO_BegWord = 99;
+
+  /// beginning of word only
+  static const int CTO_BegMidWord = 100;
+
+  /// beginning or middle of word
+  static const int CTO_MidWord = 101;
+
+  /// middle of word only 20
+  static const int CTO_MidEndWord = 102;
+
+  /// middle or end of word
+  static const int CTO_EndWord = 103;
+
+  /// end of word only
+  static const int CTO_PrePunc = 104;
+
+  /// punctuation in string at beginning of word
+  static const int CTO_PostPunc = 105;
+
+  /// punctuation in string at end of word
+  static const int CTO_BegNum = 106;
+
+  /// beginning of number
+  static const int CTO_MidNum = 107;
+
+  /// middle of number, e.g., decimal point
+  static const int CTO_EndNum = 108;
+
+  /// end of number
+  static const int CTO_DecPoint = 109;
+  static const int CTO_Hyphen = 110;
+
+  /// CTO_Apostrophe,
+  /// CTO_Initial,
+  static const int CTO_NoBreak = 111;
+  static const int CTO_Match = 112;
+  static const int CTO_BackMatch = 113;
+  static const int CTO_Attribute = 114;
+  static const int CTO_Base = 115;
+  static const int CTO_Macro = 116;
+  static const int CTO_None = 117;
+
+  /// "internal" opcodes
+  static const int CTO_EndCapsPhraseBefore = 118;
+  static const int CTO_EndCapsPhraseAfter = 119;
+  static const int CTO_All = 120;
+}
+
+final class TranslationTableRule extends ffi.Struct {
+  external ffi.Pointer<ffi.Char> sourceFile;
+
+  @ffi.Int()
+  external int sourceLine;
+
+  @ffi.Int()
+  external int index;
+
+  /// sequence number of rule within table
+  @TranslationTableOffset()
+  external int charsnext;
+
+  /// next chars entry
+  @TranslationTableOffset()
+  external int dotsnext;
+
+  /// next dots entry
+  @TranslationTableCharacterAttributes()
+  external int after;
+
+  /// character types which must follow
+  @TranslationTableCharacterAttributes()
+  external int before;
+
+  /// character types which must precede
+  @TranslationTableOffset()
+  external int patterns;
+
+  /// before and after patterns
+  @ffi.Int32()
+  external int opcode;
+
+  /// rule for testing validity of replacement
+  @ffi.Char()
+  external int nocross;
+
+  @ffi.Short()
+  external int charslen;
+
+  /// length of string to be replaced
+  @ffi.Short()
+  external int dotslen;
+
+  /// length of replacement string
+  @ffi.Array.multi([50])
+  external ffi.Array<widechar> charsdots;
+}
+
+final class HyphenationTrans extends ffi.Struct {
+  @widechar()
+  external int ch;
+
+  @widechar()
+  external int newState;
+}
+
+final class PointOff extends ffi.Union {
+  external ffi.Pointer<HyphenationTrans> pointer;
+
+  @TranslationTableOffset()
+  external int offset;
+}
+
+final class HyphenationState extends ffi.Struct {
+  external PointOff trans;
+
+  @TranslationTableOffset()
+  external int hyphenPattern;
+
+  @widechar()
+  external int fallbackState;
+
+  @widechar()
+  external int numTrans;
+}
+
+final class CharacterClass extends ffi.Struct {
+  external ffi.Pointer<CharacterClass> next;
+
+  @TranslationTableCharacterAttributes()
+  external int attribute;
+
+  @widechar()
+  external int length;
+
+  @ffi.Array.multi([1])
+  external ffi.Array<widechar> name;
+}
+
+final class RuleName extends ffi.Struct {
+  external ffi.Pointer<RuleName> next;
+
+  @TranslationTableOffset()
+  external int ruleOffset;
+
+  @widechar()
+  external int length;
+
+  @ffi.Array.multi([1])
+  external ffi.Array<widechar> name;
+}
+
+final class EmphasisClass extends ffi.Struct {
+  /// corresponding value in "typeforms" enum
+  @formtype()
+  external int typeform;
+
+  /// corresponding character attribute
+  @TranslationTableCharacterAttributes()
+  external int mode;
+
+  /// bit field that contains a single "1"
+  @ffi.UnsignedInt()
+  external int value;
+
+  /// emphasis rules (index in emphRules, emphModeChars and noEmphChars)
+  @ffi.UnsignedShort()
+  external int rule;
+}
+
+final class DisplayTableHeader extends ffi.Struct {
+  @TranslationTableOffset()
+  external int tableSize;
+
+  @TranslationTableOffset()
+  external int bytesUsed;
+
+  @ffi.Array.multi([1123])
+  external ffi.Array<TranslationTableOffset> charToDots;
+
+  @ffi.Array.multi([1123])
+  external ffi.Array<TranslationTableOffset> dotsToChar;
+
+  @ffi.Array.multi([1])
+  external ffi.Array<TranslationTableData> ruleArea;
+}
+
+/// Basic type for translation table data, which carries all alignment
+/// constraints that fields contained in translation table may have.
+/// Notably TranslationTableCharacterAttributes is unsigned long long, so we need
+/// at least this big basic type.
+typedef TranslationTableData = ffi.UnsignedLongLong;
+
+/// Translation table header
+final class TranslationTableHeader extends ffi.Struct {
+  /// state needed during compilation
+  @TranslationTableOffset()
+  external int tableSize;
+
+  @TranslationTableOffset()
+  external int bytesUsed;
+
+  external ffi.Pointer<CharacterClass> characterClasses;
+
+  @TranslationTableCharacterAttributes()
+  external int nextCharacterClassAttribute;
+
+  @TranslationTableCharacterAttributes()
+  external int nextNumberedCharacterClassAttribute;
+
+  external ffi.Pointer<RuleName> ruleNames;
+
+  /// attributes 0-7 used in match rules (could also be
+  /// stored in `characterClasses', but this is slightly
+  /// faster)
+  @ffi.Array.multi([8])
+  external ffi.Array<TranslationTableCharacterAttributes> numberedAttributes;
+
+  /// 1 = attribute, 2 = class
+  @ffi.Int()
+  external int usesAttributeOrClass;
+
+  @ffi.Array.multi([101])
+  external ffi.Array<ffi.Pointer<ffi.Char>> sourceFiles;
+
+  @ffi.Int()
+  external int ruleCounter;
+
+  /// needed for translation or other api functions
+  @ffi.Int()
+  external int finalized;
+
+  @ffi.Int()
+  external int capsNoCont;
+
+  @ffi.Int()
+  external int numPasses;
+
+  @ffi.Int()
+  external int corrections;
+
+  @ffi.Int()
+  external int syllables;
+
+  @ffi.Int()
+  external int usesSequences;
+
+  @ffi.Int()
+  external int usesNumericMode;
+
+  @ffi.Int()
+  external int hasCapsModeChars;
+
+  @TranslationTableOffset()
+  external int undefined;
+
+  @TranslationTableOffset()
+  external int letterSign;
+
+  @TranslationTableOffset()
+  external int numberSign;
+
+  @TranslationTableOffset()
+  external int noContractSign;
+
+  @TranslationTableOffset()
+  external int noNumberSign;
+
+  @ffi.Array.multi([128])
+  external ffi.Array<widechar> seqPatterns;
+
+  @ffi.Array.multi([10])
+  external ffi.Array<ffi.Pointer<ffi.Char>> emphClassNames;
+
+  @ffi.Array.multi([10])
+  external ffi.Array<EmphasisClass> emphClasses;
+
+  @ffi.Array.multi([6])
+  external ffi.Array<EmphasisClass> modes;
+
+  @ffi.Int()
+  external int seqPatternsCount;
+
+  @ffi.Array.multi([128])
+  external ffi.Array<widechar> seqAfterExpression;
+
+  @ffi.Int()
+  external int seqAfterExpressionLength;
+
+  @ffi.Array.multi([16, 9])
+  external ffi.Array<ffi.Array<TranslationTableOffset>> emphRules;
+
+  @TranslationTableOffset()
+  external int begComp;
+
+  @TranslationTableOffset()
+  external int endComp;
+
+  @TranslationTableOffset()
+  external int hyphenStatesArray;
+
+  @ffi.Array.multi([64])
+  external ffi.Array<widechar> noLetsignBefore;
+
+  @ffi.Int()
+  external int noLetsignBeforeCount;
+
+  @ffi.Array.multi([256])
+  external ffi.Array<widechar> noLetsign;
+
+  @ffi.Int()
+  external int noLetsignCount;
+
+  @ffi.Array.multi([64])
+  external ffi.Array<widechar> noLetsignAfter;
+
+  @ffi.Int()
+  external int noLetsignAfterCount;
+
+  /// does not include caps: capsmodechars are
+  /// currently stored as character attributes
+  @ffi.Array.multi([10, 257])
+  external ffi.Array<ffi.Array<widechar>> emphModeChars;
+
+  /// does not include caps
+  @ffi.Array.multi([10, 257])
+  external ffi.Array<ffi.Array<widechar>> noEmphChars;
+
+  @ffi.Array.multi([1123])
+  external ffi.Array<TranslationTableOffset> characters;
+
+  /// Character definitions
+  @ffi.Array.multi([1123])
+  external ffi.Array<TranslationTableOffset> dots;
+
+  /// Dot definitions
+  @ffi.Array.multi([5])
+  external ffi.Array<TranslationTableOffset> forPassRules;
+
+  @ffi.Array.multi([5])
+  external ffi.Array<TranslationTableOffset> backPassRules;
+
+  @ffi.Array.multi([1123])
+  external ffi.Array<TranslationTableOffset> forRules;
+
+  /// chains of forward rules
+  @ffi.Array.multi([1123])
+  external ffi.Array<TranslationTableOffset> backRules;
+
+  /// Chains of backward rules
+  @ffi.Array.multi([1])
+  external ffi.Array<TranslationTableData> ruleArea;
+}
+
+abstract class AllocBuf {
+  static const int alloc_typebuf = 0;
+  static const int alloc_wordBuffer = 1;
+  static const int alloc_emphasisBuffer = 2;
+  static const int alloc_destSpacing = 3;
+  static const int alloc_passbuf = 4;
+  static const int alloc_posMapping1 = 5;
+  static const int alloc_posMapping2 = 6;
+  static const int alloc_posMapping3 = 7;
+}
+
+abstract class EmphCodeOffset {
+  static const int begPhraseOffset = 0;
+  static const int endPhraseBeforeOffset = 1;
+  static const int endPhraseAfterOffset = 2;
+  static const int begOffset = 3;
+  static const int endOffset = 4;
+  static const int letterOffset = 5;
+  static const int begWordOffset = 6;
+  static const int endWordOffset = 7;
+  static const int lenPhraseOffset = 8;
+}
+
+/// fields contain sums of EmphasisClass.value */
+/// /* MAX_EMPH_CLASSES + MAX_MODES may not exceed 16
+final class EmphasisInfo extends ffi.Opaque {}
+
+abstract class EncodingType {
+  static const int noEncoding = 0;
+  static const int bigEndian = 1;
+  static const int littleEndian = 2;
+  static const int ascii8 = 3;
+}
+
+final class FileInfo extends ffi.Struct {
+  external ffi.Pointer<ffi.Char> fileName;
+
+  external ffi.Pointer<ffi.Char> sourceFile;
+
+  external ffi.Pointer<FILE> in1;
+
+  @ffi.Int()
+  external int lineNumber;
+
+  @ffi.Int32()
+  external int encoding;
+
+  @ffi.Int()
+  external int status;
+
+  @ffi.Int()
+  external int linelen;
+
+  @ffi.Int()
+  external int linepos;
+
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.Int> checkencoding;
+
+  @ffi.Array.multi([2048])
+  external ffi.Array<widechar> line;
+}
+
+/// stdio state variables.
+///
+/// The following always hold:
+///
+/// if (_flags&(__SLBF|__SWR)) == (__SLBF|__SWR),
+/// _lbfsize is -_bf._size, else _lbfsize is 0
+/// if _flags&__SRD, _w is 0
+/// if _flags&__SWR, _r is 0
+///
+/// This ensures that the getc and putc macros (or inline functions) never
+/// try to write or read from a file that is in `read' or `write' mode.
+/// (Moreover, they can, and do, automatically switch from read mode to
+/// write mode, and back, on "r+" and "w+" files.)
+///
+/// _lbfsize is used only to make the inline line-buffered output stream
+/// code as compact as possible.
+///
+/// _ub, _up, and _ur are used when ungetc() pushes back more characters
+/// than fit in the current _bf, or when ungetc() pushes back a character
+/// that does not match the previous one in _bf.  When this happens,
+/// _ub._base becomes non-nil (i.e., a stream has ungetc() data iff
+/// _ub._base!=NULL) and _up and _ur save the current values of _p and _r.
+///
+/// NB: see WARNING above before changing the layout of this structure!
+typedef FILE = __sFILE;
+
+/// stdio state variables.
+///
+/// The following always hold:
+///
+/// if (_flags&(__SLBF|__SWR)) == (__SLBF|__SWR),
+/// _lbfsize is -_bf._size, else _lbfsize is 0
+/// if _flags&__SRD, _w is 0
+/// if _flags&__SWR, _r is 0
+///
+/// This ensures that the getc and putc macros (or inline functions) never
+/// try to write or read from a file that is in `read' or `write' mode.
+/// (Moreover, they can, and do, automatically switch from read mode to
+/// write mode, and back, on "r+" and "w+" files.)
+///
+/// _lbfsize is used only to make the inline line-buffered output stream
+/// code as compact as possible.
+///
+/// _ub, _up, and _ur are used when ungetc() pushes back more characters
+/// than fit in the current _bf, or when ungetc() pushes back a character
+/// that does not match the previous one in _bf.  When this happens,
+/// _ub._base becomes non-nil (i.e., a stream has ungetc() data iff
+/// _ub._base!=NULL) and _up and _ur save the current values of _p and _r.
+///
+/// NB: see WARNING above before changing the layout of this structure!
+final class __sFILE extends ffi.Struct {
+  /// current position in (some) buffer
+  external ffi.Pointer<ffi.UnsignedChar> _p;
+
+  /// read space left for getc()
+  @ffi.Int()
+  external int _r;
+
+  /// write space left for putc()
+  @ffi.Int()
+  external int _w;
+
+  /// flags, below; this FILE is free if 0
+  @ffi.Short()
+  external int _flags;
+
+  /// fileno, if Unix descriptor, else -1
+  @ffi.Short()
+  external int _file;
+
+  /// the buffer (at least 1 byte, if !NULL)
+  external __sbuf _bf;
+
+  /// 0 or -_bf._size, for inline putc
+  @ffi.Int()
+  external int _lbfsize;
+
+  /// cookie passed to io functions
+  external ffi.Pointer<ffi.Void> _cookie;
+
+  external ffi
+      .Pointer<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>
+      _close;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _read;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>> _seek;
+
+  external ffi.Pointer<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _write;
+
+  /// ungetc buffer
+  external __sbuf _ub;
+
+  /// additions to FILE to not break ABI
+  external ffi.Pointer<__sFILEX> _extra;
+
+  /// saved _r when _r is counting ungetc data
+  @ffi.Int()
+  external int _ur;
+
+  /// guarantee an ungetc() buffer
+  @ffi.Array.multi([3])
+  external ffi.Array<ffi.UnsignedChar> _ubuf;
+
+  /// guarantee a getc() buffer
+  @ffi.Array.multi([1])
+  external ffi.Array<ffi.UnsignedChar> _nbuf;
+
+  /// buffer for fgetln()
+  external __sbuf _lb;
+
+  /// stat.st_blksize (may be != _bf._size)
+  @ffi.Int()
+  external int _blksize;
+
+  /// current lseek offset (see WARNING)
+  @fpos_t()
+  external int _offset;
+}
+
+/// stdio buffers
+final class __sbuf extends ffi.Struct {
+  external ffi.Pointer<ffi.UnsignedChar> _base;
+
+  @ffi.Int()
+  external int _size;
+}
+
+typedef fpos_t = __darwin_off_t;
+typedef __darwin_off_t = __int64_t;
+typedef __int64_t = ffi.LongLong;
+
+/// hold a buncha junk that would grow the ABI
+final class __sFILEX extends ffi.Opaque {}
+
+const int italic = 1;
+
+const int underline = 2;
+
+const int bold = 4;
+
+const int comp_emph_1 = 1;
+
+const int comp_emph_2 = 2;
+
+const int comp_emph_3 = 4;
+
+const String EMPH_NAME_BOLD = 'bold';
+
+const String EMPH_NAME_ITALIC = 'italic';
+
+const String EMPH_NAME_UNDERLINE = 'underline';
+
+const int noUndefinedDots = 128;
+
+const int LOU_ENDSEGMENT = 65535;
+
+const int GNULIB_FSCANF = 1;
+
+const int GNULIB_MSVC_NOTHROW = 1;
+
+const int GNULIB_SCANF = 1;
+
+const int GNULIB_STRERROR = 1;
+
+const int GNULIB_TEST_CLOEXEC = 1;
+
+const int GNULIB_TEST_CLOSE = 1;
+
+const int GNULIB_TEST_DUP2 = 1;
+
+const int GNULIB_TEST_ENVIRON = 1;
+
+const int GNULIB_TEST_FCNTL = 1;
+
+const int GNULIB_TEST_FGETC = 1;
+
+const int GNULIB_TEST_FGETS = 1;
+
+const int GNULIB_TEST_FPRINTF = 1;
+
+const int GNULIB_TEST_FPUTC = 1;
+
+const int GNULIB_TEST_FPUTS = 1;
+
+const int GNULIB_TEST_FREAD = 1;
+
+const int GNULIB_TEST_FREE_POSIX = 1;
+
+const int GNULIB_TEST_FSCANF = 1;
+
+const int GNULIB_TEST_FSTAT = 1;
+
+const int GNULIB_TEST_FWRITE = 1;
+
+const int GNULIB_TEST_GETC = 1;
+
+const int GNULIB_TEST_GETCHAR = 1;
+
+const int GNULIB_TEST_GETDTABLESIZE = 1;
+
+const int GNULIB_TEST_GETOPT_POSIX = 1;
+
+const int GNULIB_TEST_MALLOC_GNU = 1;
+
+const int GNULIB_TEST_MALLOC_POSIX = 1;
+
+const int GNULIB_TEST_OPEN = 1;
+
+const int GNULIB_TEST_PRINTF = 1;
+
+const int GNULIB_TEST_PUTC = 1;
+
+const int GNULIB_TEST_PUTCHAR = 1;
+
+const int GNULIB_TEST_PUTS = 1;
+
+const int GNULIB_TEST_REALLOC_GNU = 1;
+
+const int GNULIB_TEST_REALLOC_POSIX = 1;
+
+const int GNULIB_TEST_SCANF = 1;
+
+const int GNULIB_TEST_SETENV = 1;
+
+const int GNULIB_TEST_STAT = 1;
+
+const int GNULIB_TEST_STRERROR = 1;
+
+const int GNULIB_TEST_STRNDUP = 1;
+
+const int GNULIB_TEST_STRNLEN = 1;
+
+const int GNULIB_TEST_VFPRINTF = 1;
+
+const int GNULIB_TEST_VPRINTF = 1;
+
+const int GNULIB_UNISTR_U16_MBTOUCR = 1;
+
+const int GNULIB_UNISTR_U8_UCTOMB = 1;
+
+const int HAVE_ALLOCA = 1;
+
+const int HAVE_ALLOCA_H = 1;
+
+const int HAVE_C_VARARRAYS = 1;
+
+const int HAVE_DECL_ECVT = 1;
+
+const int HAVE_DECL_EXECVPE = 0;
+
+const int HAVE_DECL_FCLOSEALL = 0;
+
+const int HAVE_DECL_FCVT = 1;
+
+const int HAVE_DECL_GCVT = 1;
+
+const int HAVE_DECL_GETDTABLESIZE = 1;
+
+const int HAVE_DECL_PROGRAM_INVOCATION_NAME = 0;
+
+const int HAVE_DECL_PROGRAM_INVOCATION_SHORT_NAME = 0;
+
+const int HAVE_DECL_SETENV = 1;
+
+const int HAVE_DECL_STRERROR_R = 1;
+
+const int HAVE_DECL_STRNDUP = 1;
+
+const int HAVE_DECL_STRNLEN = 1;
+
+const int HAVE_DECL_WCSDUP = 1;
+
+const int HAVE_DECL___ARGV = 0;
+
+const int HAVE_DIRENT_H = 1;
+
+const int HAVE_DLFCN_H = 1;
+
+const int HAVE_FCNTL = 1;
+
+const int HAVE_GETDTABLESIZE = 1;
+
+const int HAVE_GETOPT_H = 1;
+
+const int HAVE_GETOPT_LONG_ONLY = 1;
+
+const int HAVE_GETPROGNAME = 1;
+
+const int HAVE_INLINE = 1;
+
+const int HAVE_INTTYPES_H = 1;
+
+const int HAVE_LIMITS_H = 1;
+
+const int HAVE_LONG_LONG_INT = 1;
+
+const int HAVE_LSTAT = 1;
+
+const int HAVE_MALLOC_POSIX = 1;
+
+const int HAVE_MEMSET = 1;
+
+const int HAVE_SEARCH_H = 1;
+
+const int HAVE_SETENV = 1;
+
+const int HAVE_STDDEF_H = 1;
+
+const int HAVE_STDINT_H = 1;
+
+const int HAVE_STDIO_H = 1;
+
+const int HAVE_STDLIB_H = 1;
+
+const int HAVE_STRERROR_R = 1;
+
+const int HAVE_STRINGS_H = 1;
+
+const int HAVE_STRING_H = 1;
+
+const int HAVE_STRNDUP = 1;
+
+const int HAVE_STRUCT_STAT_ST_ATIMESPEC_TV_NSEC = 1;
+
+const int HAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC = 1;
+
+const int HAVE_SYMLINK = 1;
+
+const int HAVE_SYS_CDEFS_H = 1;
+
+const int HAVE_SYS_PARAM_H = 1;
+
+const int HAVE_SYS_SOCKET_H = 1;
+
+const int HAVE_SYS_STAT_H = 1;
+
+const int HAVE_SYS_TIME_H = 1;
+
+const int HAVE_SYS_TYPES_H = 1;
+
+const int HAVE_TSEARCH = 1;
+
+const int HAVE_UNISTD_H = 1;
+
+const int HAVE_UNSIGNED_LONG_LONG_INT = 1;
+
+const int HAVE_VAR___PROGNAME = 1;
+
+const int HAVE_VPRINTF = 1;
+
+const int HAVE_WCHAR_H = 1;
+
+const int HAVE_WCHAR_T = 1;
+
+const int HAVE_WINT_T = 1;
+
+const int HAVE_WORKING_O_NOATIME = 1;
+
+const int HAVE_WORKING_O_NOFOLLOW = 1;
+
+const int HAVE__BOOL = 1;
+
+const String LT_OBJDIR = '.libs/';
+
+const int MALLOC_0_IS_NONNULL = 1;
+
+const int __USE_MINGW_ANSI_STDIO = 1;
+
+const int OPEN_TRAILING_SLASH_BUG = 1;
+
+const String PACKAGE = 'liblouis';
+
+const String PACKAGE_BUGREPORT = 'liblouis-liblouisxml@freelists.org';
+
+const String PACKAGE_NAME = 'Liblouis';
+
+const String PACKAGE_STRING = 'Liblouis 3.30.0';
+
+const String PACKAGE_TARNAME = 'liblouis';
+
+const String PACKAGE_URL = 'http://www.liblouis.io';
+
+const String PACKAGE_VERSION = '3.30.0';
+
+const int REPLACE_FUNC_STAT_FILE = 1;
+
+const int REPLACE_STRERROR_0 = 1;
+
+const int STDC_HEADERS = 1;
+
+const int _ALL_SOURCE = 1;
+
+const int _DARWIN_C_SOURCE = 1;
+
+const int __EXTENSIONS__ = 1;
+
+const int _GNU_SOURCE = 1;
+
+const int _HPUX_ALT_XOPEN_SOCKET_API = 1;
+
+const int _NETBSD_SOURCE = 1;
+
+const int _OPENBSD_SOURCE = 1;
+
+const int _POSIX_PTHREAD_SEMANTICS = 1;
+
+const int __STDC_WANT_IEC_60559_ATTRIBS_EXT__ = 1;
+
+const int __STDC_WANT_IEC_60559_BFP_EXT__ = 1;
+
+const int __STDC_WANT_IEC_60559_DFP_EXT__ = 1;
+
+const int __STDC_WANT_IEC_60559_EXT__ = 1;
+
+const int __STDC_WANT_IEC_60559_FUNCS_EXT__ = 1;
+
+const int __STDC_WANT_IEC_60559_TYPES_EXT__ = 1;
+
+const int __STDC_WANT_LIB_EXT2__ = 1;
+
+const int __STDC_WANT_MATH_SPEC_FUNCS__ = 1;
+
+const int _TANDEM_SOURCE = 1;
+
+const String VERSION = '3.30.0';
+
+const int _USE_STD_STAT = 1;
+
+const int PATH_SEP = 58;
+
+const int DIR_SEP = 47;
+
+const int NUMVAR = 50;
+
+const int EMPHMODECHARSSIZE = 256;
+
+const int NOEMPHCHARSSIZE = 256;
+
+const int LETSIGNSIZE = 256;
+
+const int LETSIGNBEFORESIZE = 64;
+
+const int LETSIGNAFTERSIZE = 64;
+
+const int SEQPATTERNSIZE = 128;
+
+const int CHARSIZE = 2;
+
+const int DEFAULTRULESIZE = 50;
+
+const int HASHNUM = 1123;
+
+const int MAXPASS = 4;
+
+const int MAXSTRING = 2048;
+
+const int MAX_MACRO_VAR = 100;
+
+const int MAX_EMPH_CLASSES = 10;
+
+const int MAX_MODES = 6;
+
+const int MAX_SOURCE_FILES = 100;
+
+const int OFFSETSIZE = 8;
+
+const int MAXPASSBUF = 3;
