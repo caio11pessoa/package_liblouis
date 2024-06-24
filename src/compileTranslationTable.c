@@ -42,6 +42,8 @@
 
 #define QUOTESUB 28 /* Stand-in for double quotes in strings */
 
+#define TABLESDIR "" /* Stand-in for double quotes in strings */
+
 /* needed to make debuggin easier */
 #ifdef DEBUG
 wchar_t wchar;
